@@ -1,0 +1,190 @@
+/* style.css */
+
+/* --- Reset Básico e Tipografia --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Impede a rolagem da página inteira */
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+/* --- Estrutura Principal --- */
+#app {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* --- Área do Modelo 3D --- */
+#conteiner-3d {
+    flex: 1; /* Ocupa todo o espaço restante da tela */
+    position: relative;
+    cursor: crosshair; /* Muda o cursor para indicar precisão de clique */
+}
+
+/* Botão Flutuante sobre o 3D */
+#btn-estratificar {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2b5c8f;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    z-index: 10; /* Garante que fique acima do 3D */
+}
+
+#btn-estratificar:hover {
+    background-color: #3b7cb8;
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* Classe adicionada via app.js quando o botão for clicado */
+#btn-estratificar.ativo {
+    background-color: #d9534f; /* Fica vermelho para indicar ação de retorno */
+}
+
+/* --- Painel Lateral de Informações --- */
+#painel-info {
+    width: 400px;
+    min-width: 350px;
+    height: 100%;
+    background-color: #242424;
+    border-left: 1px solid #333;
+    padding: 30px;
+    overflow-y: auto; /* Permite rolar o painel se o texto for longo */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+}
+
+/* Mensagem Inicial (quando nada foi clicado) */
+#painel-conteudo {
+    transition: opacity 0.15s ease-in-out;
+}
+
+#mensagem-inicial {
+    text-align: center;
+    color: #888;
+    margin-top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    font-weight: 300;
+}
+
+/* --- Estilos do Conteúdo Gerado Dinamicamente --- */
+.categoria {
+    display: inline-block;
+    background-color: #333;
+    color: #4da6ff;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border: 1px solid #4da6ff;
+}
+
+h2 {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4da6ff;
+    padding-bottom: 10px;
+}
+
+p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+p strong {
+    color: #4da6ff;
+}
+
+/* Caixas para Detalhes Anatômicos e Notas Clínicas */
+.secao-detalhes, .secao-clinica {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.secao-detalhes {
+    border-left: 4px solid #4da6ff;
+}
+
+/* Destaque para a parte clínica (Patologias chamam a atenção) */
+.secao-clinica {
+    border-left: 4px solid #ff4d4d;
+    background-color: #2e1a1a; 
+}
+
+h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #dedede;
+}
+
+ul {
+    list-style-type: none; /* Removemos as "bolinhas" padrão */
+    padding-left: 5px;
+}
+
+ul li {
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 15px;
+    color: #cccccc;
+}
+
+/* Criando um "bullet point" personalizado */
+ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: currentColor; /* Pega a cor do bloco */
+}
+
+.secao-detalhes ul li::before { color: #4da6ff; }
+.secao-clinica ul li::before { color: #ff4d4d; }
+
+/* --- Responsividade (Para telas menores/Tablets) --- */
+@media (max-width: 800px) {
+    #app {
+        flex-direction: column; /* Coloca o 3D em cima e o texto embaixo */
+    }
+
+    #painel-info {
+        width: 100%;
+        height: 40vh; /* O painel ocupa 40% da tela */
+        border-left: none;
+        border-top: 1px solid #333;
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+    }
+
+    #conteiner-3d {
+        height: 60vh;
+    }
+
+    #btn-estratificar {
+        bottom: 15px;
+    }
+}
