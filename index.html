@@ -7,18 +7,27 @@
     
     <!-- Conectando nosso arquivo de estilos -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Resolve o erro 404 do favicon -->
+    <link rel="icon" href="data:,">
+
+    <!-- Mapa de Importação: Ensina o navegador onde encontrar o "three" -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
 </head>
 <body>
 
-    <!-- Container principal que divide a tela (Flexbox) -->
     <div id="app">
-        
-        <!-- Área onde o modelo 3D será renderizado -->
         <div id="conteiner-3d">
             <button id="btn-estratificar">Separar em Camadas (Estratificar)</button>
         </div>
 
-        <!-- Painel lateral onde os textos aparecerão -->
         <aside id="painel-info">
             <div id="painel-conteudo">
                 <p id="mensagem-inicial">
@@ -27,13 +36,8 @@
                 </p>
             </div>
         </aside>
-
     </div>
 
-    <!-- 
-      Importando o nosso script principal. 
-      O type="module" é OBRIGATÓRIO pois usamos o comando "import" no JavaScript.
-    -->
     <script type="module" src="app.js"></script>
 
 </body>
