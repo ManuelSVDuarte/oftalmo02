@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomia Interativa do Olho 3D</title>
+    
+    <!-- Conectando nosso arquivo de estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Container principal que divide a tela (Flexbox) -->
+    <div id="app">
+        
+        <!-- Área onde o modelo 3D será renderizado -->
+        <div id="conteiner-3d">
+            <button id="btn-estratificar">Separar em Camadas (Estratificar)</button>
+        </div>
+
+        <!-- Painel lateral onde os textos aparecerão -->
+        <aside id="painel-info">
+            <div id="painel-conteudo">
+                <p id="mensagem-inicial">
+                    Gire o modelo 3D usando o mouse.<br><br>
+                    <strong>Clique em uma estrutura do olho</strong> para ver suas informações, anatomia e correlações clínicas.
+                </p>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- 
+      Importando o nosso script principal. 
+      O type="module" é OBRIGATÓRIO pois usamos o comando "import" no JavaScript.
+    -->
+    <script type="module" src="app.js"></script>
+
+</body>
+</html>
